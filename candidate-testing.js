@@ -29,26 +29,16 @@ function askForName() {
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
-    candidateAnswers.push(input.question(`${i + 1}) ${questions[i]}`));
+    let userAnswer = input.question(`${i + 1}) ${questions[i]}`);
+    console.log(`Your Answer: ${userAnswer}`);
+    console.log(`Correct Answer: ${correctAnswers[i]}`);
+    console.log("------------------------------");
+    candidateAnswers.push(userAnswer);
   }
   return candidateAnswers;
 }
 
 function gradeQuiz(candidateAnswers) {
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
-
-  for (let i = 0; i < questions.length; i++) {
-    console.log(`Your Answer: ${candidateAnswers[i]}`);
-
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      console.log(`Correct Answer: ${correctAnswers[i]}`);
-    } else {
-      console.log(
-        `That is incorrect. The correct answer is: ${correctAnswers[i]}`
-      );
-    }
-  }
-
   let numberOfCorrectAnswers = 0;
   for (let i = 0; i < correctAnswers.length; i++) {
     if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()) {
